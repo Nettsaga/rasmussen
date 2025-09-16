@@ -24,7 +24,6 @@ const Navigation = () => {
       ]
     },
     { name: "Referanser", path: "/referanser" },
-    { name: "Om oss", path: "/ansatte" },
     { name: "Kontakt", path: "/kontakt" },
   ];
 
