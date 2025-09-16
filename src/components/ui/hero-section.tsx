@@ -17,20 +17,22 @@ const HeroSection = ({
   return (
     <section
       className={cn(
-        "relative flex items-center justify-center min-h-screen-minus-nav",
+        "relative flex items-center justify-center min-h-screen w-full",
         className
       )}
-      style={backgroundImage ? {
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      } : undefined}
+      style={backgroundImage
+        ? {
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }
+        : undefined}
     >
       {overlay && backgroundImage && (
-        <div className="absolute inset-0 bg-foreground/30" />
+        <div className="absolute inset-0 bg-black/60" />
       )}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full text-brand-foreground">
         {children}
       </div>
     </section>

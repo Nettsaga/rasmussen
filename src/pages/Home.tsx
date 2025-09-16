@@ -1,15 +1,22 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardFooter, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { NavLink } from "react-router-dom";
-import { ArrowRight, Award, MapPin, Calendar, Hammer, Wrench, Home as HomeIcon } from "lucide-react";
-import HeroSection from "@/components/ui/hero-section";
+import { ArrowRight, Award, MapPin, Calendar, Hammer, Wrench, ShieldCheck, Home as HomeIcon } from "lucide-react";
+import RotatingHeroSection from "@/components/ui/rotating-hero-section";
 import heroImage from "@/assets/hero-home.webp";
 import newBuildImage from "@/assets/service-newbuild.webp";
 import maintenanceImage from "@/assets/service-maintenance.webp";
 import renovationImage from "@/assets/service-renovation.webp";
+import { useSEO } from "@/hooks/use-seo";
 
 const Home = () => {
+  useSEO('home');
+  
+  // Font test - remove this after confirming font works
+ 
+
   const services = [
     {
       title: "Oppføring",
@@ -52,13 +59,26 @@ const Home = () => {
     },
   ];
 
+  const certifications = [
+    { src: "/cert-1.png", alt: "Sertifisering 1" },
+    { src: "/cert-3.png", alt: "Sertifisering 3" },
+    { src: "/cert-2.webp", alt: "Sertifisering 2" },
+  ];
+
   return (
-    <div>
+    <div className="font-sans bg-background text-foreground">
       {/* Hero Section */}
-      <HeroSection backgroundImage={heroImage}>
-        <div className="container mx-auto px-4 text-center text-background">
+      <RotatingHeroSection 
+        images={[
+          "/references/5.jpg",
+          "/references/4.jpg", 
+          "/references/6.jpg"
+        ]}
+        interval={6000}
+      >
+        <div className="container mx-auto px-4 text-center text-brand-foreground">
           <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold">
+            <h1 className="text-5xl md:text-6xl lg:text-6xl font-bold">
               Byggmester i Vestfold siden 1986
             </h1>
             <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">
@@ -71,7 +91,7 @@ const Home = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </NavLink>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-background text-background hover:bg-background hover:text-foreground">
+              <Button asChild variant="outline" size="lg" className="border-foreground text-foreground hover:bg-foreground hover:text-background">
                 <NavLink to="/referanser">
                   Se referanser
                 </NavLink>
@@ -79,78 +99,139 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </HeroSection>
+      </RotatingHeroSection>
 
-      {/* Trust Band */}
-      <section className="py-16 bg-subtle">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center items-center gap-8 text-center">
-            <div className="flex items-center space-x-2">
-              <Award className="h-6 w-6 text-brand" />
-              <span className="font-semibold">Mesterbrev</span>
+      {/* About Section (trimmed copy + placeholder image) */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 grid gap-10 md:grid-cols-2 items-center">
+          <div>
+            <Badge className="mb-4 bg-accent text-accent-foreground">Om oss</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Rasmussen & Skjelbred AS</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                Byggmester i Stokke, Vestfold – etablert i 1986 og i dag 20 ansatte. Vi prioriterer kvalitet og godt
+                håndverk, og har sentral godkjenning.
+              </p>
+              <p>
+                Eneboliger er vår spesialitet, men vi tar oppdrag i alle størrelser. Med pålitelige samarbeidspartnere
+                leverer vi totalentreprise fra grunnarbeid til nøkkelferdig.
+              </p>
+              <p>
+                Tjenester: oppføring av hus og hytter, service og småjobber, rehabilitering av bolig.
+              </p>
+              <p>
+                Som medlem av Mesterhus tilbyr vi både kataloghus og skreddersøm. Ta gjerne kontakt om tomter eller
+                leiligheter i Stokke/Tønsberg – kanskje har vi et prosjekt som passer deg.
+              </p>
             </div>
-            <div className="flex items-center space-x-2">
-              <Calendar className="h-6 w-6 text-brand" />
-              <span className="font-semibold">Etablert 1986</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <MapPin className="h-6 w-6 text-brand" />
-              <span className="font-semibold">Vestfold</span>
-            </div>
-            <Badge variant="outline" className="border-brand text-brand">
-              Mesterhus
-            </Badge>
+          
           </div>
+          <div>
+            <AspectRatio ratio={16 / 9}>
+              <img
+                src="/references/3.jpg"
+                alt="Byggeprosjekt"
+                className="h-full w-full object-cover rounded-lg"
+              />
+            </AspectRatio>
+          </div>
+         
         </div>
       </section>
 
-      {/* Featured Services */}
-      <section className="py-24">
+      {/* Certifications (placed under About) */}
+      <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Våre tjenester
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Fra oppføring av nye hjem til vedlikehold og rehabilitering - vi er din totalleverandør i Vestfold.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={service.title} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="p-2 bg-brand/10 rounded-lg">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold">{service.title}</h3>
-                  </div>
-                  <p className="text-muted-foreground mb-4">
-                    {service.description}
-                  </p>
-                  <Button asChild variant="outline" className="w-full group-hover:bg-brand group-hover:text-brand-foreground transition-colors">
-                    <NavLink to={service.path}>
-                      Les mer
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </NavLink>
-                  </Button>
-                </CardContent>
-              </Card>
+          <h2 className="sr-only">Sertifiseringer</h2>
+          <Card className="rounded-2xl">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl md:text-3xl">Sertifiseringer</CardTitle>
+              <CardDescription>Dokumentasjon og miljøprofil</CardDescription>
+            </CardHeader>
+            <CardContent>
+          <div className="flex flex-wrap items-center justify-center gap-20">
+            {certifications.map((c, i) => (
+              <img
+                key={c.src}
+                src={c.src}
+                alt={c.alt}
+                className={`h-20 md:h-28 lg:h-32 w-auto object-contain`}
+                loading="lazy"
+              />
             ))}
           </div>
+            </CardContent>
+            <CardFooter className="justify-center">
+              <Button asChild size="lg">
+                <a
+                  href="https://rapportering.miljofyrtarn.no/stats/162227"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Se hele rapporten
+                </a>
+              </Button>
+            </CardFooter>
+          </Card>
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-brand text-brand-foreground hidden">
+            <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-foreground/10 blur-3xl" aria-hidden />
+            <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-background/10 blur-3xl" aria-hidden />
+            <div className="relative px-8 py-12 md:px-12">
+              <div className="flex flex-wrap justify-center gap-2 mb-4">
+                <Badge className="bg-background text-foreground">Gratis befaring</Badge>
+                <Badge className="bg-background text-foreground">Sentral godkjenning</Badge>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-center">Klar for å starte ditt prosjekt?</h2>
+              <p className="text-lg opacity-90 text-center mt-3">
+                La oss ta en uforpliktende prat om bolig, hytte eller rehabilitering.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Button asChild size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90">
+                  <NavLink to="/kontakt">
+                    Be om tilbud
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </NavLink>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-brand-foreground text-brand-foreground hover:bg-brand-foreground/10">
+                  <NavLink to="/referanser">Se referanser</NavLink>
+                </Button>
+              </div>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm opacity-90">
+                <div className="flex items-center gap-2"><Award className="h-4 w-4" /> 39 år erfaring</div>
+                <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4" /> Mesterhus-medlem</div>
+                <div className="flex items-center gap-2"><Calendar className="h-4 w-4" /> Svar innen 1–2 dager</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* Certifications moved into About section above */}
+
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <Card className="border border-border bg-subtle rounded-2xl">
+            <CardContent className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between p-8">
+              <div className="space-y-2 text-center md:text-left">
+                <Badge className="mb-2 w-fit bg-accent text-accent-foreground mx-auto md:mx-0">Tjenester</Badge>
+                <CardTitle className="text-2xl md:text-3xl">Vil du utforske våre tjenester?</CardTitle>
+                <CardDescription className="text-muted-foreground">Oppdag hvordan vi støtter nybygg, renovering og løpende vedlikehold.</CardDescription>
+              </div>
+              <Button asChild size="lg" variant="default" className="self-center md:self-auto">
+                <NavLink to="/tjenester">
+                  Vis tjenester
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </NavLink>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+     
+
       {/* Why Choose Us */}
-      <section className="py-24 bg-subtle">
+      {/* <section className="py-24 bg-subtle">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -179,12 +260,12 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
-      <section className="py-24 bg-brand text-brand-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-2xl mx-auto space-y-6">
+      <section className="py-0">
+        <div className="relative w-full overflow-hidden">
+          <div className="max-w-2xl mx-auto space-y-6 hidden">
             <h2 className="text-3xl md:text-4xl font-bold">
               Klar for å starte ditt prosjekt?
             </h2>
@@ -198,8 +279,25 @@ const Home = () => {
               </NavLink>
             </Button>
           </div>
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url(/home-cta.jpg)" }}
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-background/20" aria-hidden />
+          <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28 text-center text-foreground">
+            <h2 className="text-3xl md:text-4xl font-bold">Klar for å starte ditt prosjekt?</h2>
+            <p className="text-xl opacity-90 mt-3">Kontakt oss i dag for en uforpliktende samtale om dine byggeplaner.</p>
+            <Button asChild size="lg" variant="default" className="mt-6">
+              <NavLink to="/kontakt">
+                Be om tilbud
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </NavLink>
+            </Button>
+          </div>
         </div>
       </section>
+   
     </div>
   );
 };

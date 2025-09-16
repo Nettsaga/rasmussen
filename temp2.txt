@@ -1,0 +1,16 @@
+
+          {/* Social & Legal */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-foreground">Følg oss</h3>
+            <div className="flex space-x-4">
+              <a href="#" className="text-muted-foreground hover:text-brand transition-colors">
+                <Facebook className="h-5 w-5" />
+              </a>
+            </div>
+            <div className="space-y-2 text-sm">
+              <div>Org.nr: 123456789</div>
+              <NavLink to="/personvern" className="block hover:text-brand transition-colors">
+                Personvern
+              </NavLink>
+            </div>
+          </div>

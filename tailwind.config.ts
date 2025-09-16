@@ -57,8 +57,9 @@ export default {
         },
       },
       fontFamily: {
+        // Use Faustina as the primary UI font
         sans: [
-          "Inter",
+          "Faustina",
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -66,7 +67,7 @@ export default {
           "Roboto",
           '"Helvetica Neue"',
           "Arial",
-          "sans-serif",
+          "serif",
         ],
       },
       spacing: {

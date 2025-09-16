@@ -1,0 +1,14 @@
+          <div className="space-y-4">
+            <h3 className="font-semibold text-foreground">Tjenester</h3>
+            <div className="space-y-2 text-sm">
+              <NavLink to="/tjenester/oppforing" className="block hover:text-brand transition-colors">
+                Oppføring
+              </NavLink>
+              <NavLink to="/tjenester/service-og-smajobber" className="block hover:text-brand transition-colors">
+                Service & småjobber
+              </NavLink>
+              <NavLink to="/tjenester/rehabilitering" className="block hover:text-brand transition-colors">
+                Rehabilitering
+              </NavLink>
+            </div>
+          </div>
