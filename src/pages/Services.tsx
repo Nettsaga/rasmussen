@@ -8,6 +8,17 @@ import renovationImage from "@/assets/service-renovation.webp";
 
 const Services = () => {
   const services = [
+    "Construction of houses and cottages",
+    "Service and small jobs", 
+    "Residential rehabilitation",
+    "Garage",
+    "Kindergartens and schools",
+    "Apartment complex",
+    "Turnkey house",
+    "Remodeling"
+  ];
+
+  const mainServices = [
     {
       title: "Oppføring",
       subtitle: "Nye hjem og hytter",
@@ -56,19 +67,39 @@ const Services = () => {
     <div className="pt-24 pb-16">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Våre tjenester
+            Our construction services
           </h1>
-          <p className="text-xl text-muted-foreground">
-            Som etablert byggmester i Vestfold siden 1986 tilbyr vi et bredt spekter av byggtjenester. 
-            Fra oppføring av nye hjem til vedlikehold og rehabilitering - vi er din pålitelige partner.
-          </p>
+          <div className="space-y-6 text-lg text-muted-foreground">
+            <p>
+              If you are looking for a construction company you can trust, you have come to the right place. 
+              We have many years of experience and skilled professionals who are passionate about the profession. 
+              We emphasize good and close dialogue with our customers, and ensure that you as a customer have 
+              a full overview of the process so that you do not have to be afraid of being surprised.
+            </p>
+            <div>
+              <p className="font-semibold text-foreground mb-4">
+                We have many different projects behind us, and offer, among other things:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-left max-w-2xl mx-auto">
+                {services.map((service, index) => (
+                  <div key={index} className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-brand rounded-full" />
+                    <span>{service}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <p className="font-semibold text-brand">
+              We are located in Stokke and deliver our construction services to all of Vestfold.
+            </p>
+          </div>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {mainServices.map((service, index) => (
             <Card key={service.title} className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
