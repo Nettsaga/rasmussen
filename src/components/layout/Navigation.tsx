@@ -46,32 +46,48 @@ const Navigation = () => {
             {navItems.map((item) => (
               <div key={item.name}>
                 {item.subItems ? (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button 
-                        variant="ghost" 
-                        className="flex items-center space-x-1 hover:text-brand"
-                      >
-                        <span>{item.name}</span>
-                        <ChevronDown className="h-4 w-4" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent 
-                      align="start" 
-                      className="bg-background border border-border shadow-lg"
+                  <div className="flex items-center">
+                    {/* Main Tjenester link */}
+                    <NavLink
+                      to={item.path}
+                      className={({ isActive }) =>
+                        `relative px-1 py-2 text-sm font-medium transition-colors hover:text-brand ${
+                          isActive 
+                            ? "text-brand after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand" 
+                            : "text-foreground"
+                        }`
+                      }
                     >
-                      {item.subItems.map((subItem) => (
-                        <DropdownMenuItem key={subItem.name} asChild>
-                          <NavLink
-                            to={subItem.path}
-                            className="block px-4 py-2 text-sm hover:bg-subtle hover:text-brand transition-colors"
-                          >
-                            {subItem.name}
-                          </NavLink>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                      {item.name}
+                    </NavLink>
+                    {/* Dropdown for sub-items */}
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          className="ml-1 p-1 hover:text-brand"
+                        >
+                          <ChevronDown className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent 
+                        align="start" 
+                        className="bg-background border border-border shadow-lg"
+                      >
+                        {item.subItems.map((subItem) => (
+                          <DropdownMenuItem key={subItem.name} asChild>
+                            <NavLink
+                              to={subItem.path}
+                              className="block px-4 py-2 text-sm hover:bg-subtle hover:text-brand transition-colors"
+                            >
+                              {subItem.name}
+                            </NavLink>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
                 ) : (
                   <NavLink
                     to={item.path}
@@ -115,9 +131,13 @@ const Navigation = () => {
                 <div key={item.name}>
                   {item.subItems ? (
                     <div>
-                      <div className="font-medium text-foreground py-2">
+                      <NavLink
+                        to={item.path}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block font-medium text-foreground py-2 hover:text-brand transition-colors"
+                      >
                         {item.name}
-                      </div>
+                      </NavLink>
                       <div className="pl-4 space-y-2">
                         {item.subItems.map((subItem) => (
                           <NavLink
