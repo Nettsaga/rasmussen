@@ -46,9 +46,6 @@ const Footer = () => {
               <NavLink to="/tjenester" className="block hover:text-brand transition-colors">
                 Tjenester
               </NavLink>
-              <NavLink to="/tomter" className="block hover:text-brand transition-colors">
-                Tomter
-              </NavLink>
               <NavLink to="/referanser" className="block hover:text-brand transition-colors">
                 Referanser
               </NavLink>

@@ -23,7 +23,6 @@ const Navigation = () => {
         { name: "Rehabilitering", path: "/tjenester/rehabilitering" },
       ]
     },
-    { name: "Tomter", path: "/tomter" },
     { name: "Referanser", path: "/referanser" },
     { name: "Om oss", path: "/ansatte" },
     { name: "Kontakt", path: "/kontakt" },
