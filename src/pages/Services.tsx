@@ -80,7 +80,7 @@ const Services = () => {
             {serviceCards.map((service) => (
               <Card
                 key={service.title}
-                className="group flex h-full flex-col overflow-hidden border-border/60 transition-all duration-300 hover:shadow-xl"
+                className="group theme-light flex h-full flex-col overflow-hidden border border-border/40 bg-card transition-all duration-300 hover:shadow-xl"
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
@@ -96,7 +96,7 @@ const Services = () => {
                       {service.description}
                     </CardDescription>
                   </CardHeader>
-                  <CardFooter className="pt-0">
+                  <CardFooter className="pt-0 border-t border-border/30">
                     {service.to ? (
                       <Button
                         asChild
