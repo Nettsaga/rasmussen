@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X, ChevronDown, Facebook } from "lucide-react";
+import { Menu, X, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,15 +16,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Hjem", path: "/" },
-    { 
-      name: "Tjenester", 
-      path: "/tjenester",
-      subItems: [
-        { name: "Oppføring", path: "/tjenester/oppforing" },
-        { name: "Service & småjobber", path: "/tjenester/service-og-smajobber" },
-        { name: "Rehabilitering", path: "/tjenester/rehabilitering" },
-      ]
-    },
+    { name: "Tjenester", path: "/tjenester" },
     { name: "Referanser", path: "/referanser" },
     { name: "Ansatte", path: "/ansatte" },
     { name: "Kontakt", path: "/kontakt" },
@@ -39,10 +25,10 @@ const Navigation = () => {
   return (
     <nav
       className={
-        `fixed top-top-bar z-40 h-nav w-full border-b transition-colors duration-300 ` +
-        (scrolled 
-          ? "theme-light bg-brand-foreground border-border/60 shadow-sm" 
-          : "bg-transparent border-transparent")
+        `fixed top-top-bar z-40 h-nav w-full border-b transition-colors duration-300 backdrop-blur-md theme-light ` +
+        (scrolled
+          ? "bg-brand-foreground/95 border-border/60 shadow-sm"
+          : "bg-brand-foreground/70 border-border/30")
       }
     >
       <div className="container mx-auto px-4 h-full">
@@ -52,74 +38,26 @@ const Navigation = () => {
             <img
               src="/logo.png"
               alt="Rasmussen & Skjelbred"
-              className="h-8 w-auto md:h-9"
+              className="h-10 w-auto md:h-12"
             />
           </NavLink>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <div key={item.name}>
-                {item.subItems ? (
-                  <div className="flex items-center">
-                    {/* Main Tjenester link */}
-                    <NavLink
-                      to={item.path}
-                      className={({ isActive }) =>
-                        `relative px-1 py-2 text-lg font-medium transition-colors hover:text-brand ${
-                          isActive 
-                            ? "text-brand after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand" 
-                            : scrolled ? "text-gray-900 hover:text-brand" : "text-white hover:text-brand drop-shadow-lg"
-                        }`
-                      }
-                    >
-                      {item.name}
-                    </NavLink>
-                    {/* Dropdown for sub-items */}
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button 
-                          variant="ghost" 
-                          size="sm"
-                          className={`ml-1 p-1 hover:text-white ${
-                            scrolled ? "text-brand" : "text-white drop-shadow-lg"
-                          }`}
-                        >
-                          <ChevronDown className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent 
-                        align="start" 
-                        className="theme-light bg-brand-foreground text-foreground border border-border/60 shadow-lg"
-                      >
-                        {item.subItems.map((subItem) => (
-                          <DropdownMenuItem key={subItem.name} asChild>
-                            <NavLink
-                              to={subItem.path}
-                              className="block px-4 py-2 text-sm hover:bg-subtle hover:text-brand transition-colors"
-                            >
-                              {subItem.name}
-                            </NavLink>
-                          </DropdownMenuItem>
-                        ))}
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                ) : (
-                  <NavLink
-                    to={item.path}
-                    className={({ isActive }) =>
-                      `relative px-1 py-2 text-lg font-medium transition-colors hover:text-brand ${
-                        isActive 
-                          ? "text-brand after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand" 
-                          : scrolled ? "text-gray-900 hover:text-brand" : "text-white hover:text-brand drop-shadow-lg"
-                      }`
-                    }
-                  >
-                    {item.name}
-                  </NavLink>
-                )}
-              </div>
+              <NavLink
+                key={item.name}
+                to={item.path}
+                className={({ isActive }) =>
+                  `relative px-1 py-2 text-lg font-medium transition-colors after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-brand after:transition-opacity ${
+                    isActive
+                      ? "text-brand after:opacity-100"
+                      : "text-foreground/80 hover:text-brand after:opacity-0"
+                  }`
+                }
+              >
+                {item.name}
+              </NavLink>
             ))}
           </div>
 
@@ -128,9 +66,7 @@ const Navigation = () => {
             href="https://www.facebook.com/profile.php?id=61574624980669"
             target="_blank"
             rel="noopener noreferrer"
-            className={`lg:flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-brand/10 hidden ${
-              scrolled ? "text-brand hover:text-brand" : "text-white hover:text-white drop-shadow-lg"
-            }`}
+            className="lg:flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-brand/10 hidden text-brand hover:text-brand/80"
             aria-label="Visit our Facebook page"
           >
             <Facebook className="h-5 w-5" />
@@ -158,43 +94,18 @@ const Navigation = () => {
           <div className="lg:hidden absolute top-full left-0 w-full theme-light bg-brand-foreground border-b border-border/60 shadow-lg">
             <div className="px-4 py-4 space-y-4">
               {navItems.map((item) => (
-                <div key={item.name}>
-                  {item.subItems ? (
-                    <div>
-                      <NavLink
-                        to={item.path}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block font-medium text-gray-900 py-2 hover:text-brand transition-colors"
-                      >
-                        {item.name}
-                      </NavLink>
-                      <div className="pl-4 space-y-2">
-                        {item.subItems.map((subItem) => (
-                          <NavLink
-                            key={subItem.name}
-                            to={subItem.path}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block text-sm text-muted-foreground hover:text-brand transition-colors py-1"
-                          >
-                            {subItem.name}
-                          </NavLink>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <NavLink
-                      to={item.path}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={({ isActive }) =>
-                        `block text-sm font-medium py-2 transition-colors hover:text-brand ${
-                          isActive ? "text-brand" : "text-gray-900"
-                        }`
-                      }
-                    >
-                      {item.name}
-                    </NavLink>
-                  )}
-                </div>
+                <NavLink
+                  key={item.name}
+                  to={item.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `block text-sm font-medium py-2 transition-colors hover:text-brand ${
+                      isActive ? "text-brand" : "text-foreground/80"
+                    }`
+                  }
+                >
+                  {item.name}
+                </NavLink>
               ))}
               
               {/* Facebook Link in Mobile Menu */}
@@ -203,7 +114,7 @@ const Navigation = () => {
                   href="https://www.facebook.com/profile.php?id=61574624980669&sk=photos"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-900 hover:text-brand transition-colors py-2"
+                  className="flex items-center space-x-2 text-foreground hover:text-brand transition-colors py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Facebook className="h-5 w-5" />

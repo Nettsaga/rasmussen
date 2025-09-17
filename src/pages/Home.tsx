@@ -139,6 +139,40 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Mesterhus Dealer */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <Card className="rounded-2xl border border-border/60 bg-subtle/70">
+            <CardContent className="flex flex-col items-center gap-6 p-8 text-center md:flex-row md:items-center md:gap-10 md:text-left">
+              <img
+                src="/mesterhus.webp"
+                alt="Mesterhus logo"
+                className="h-16 w-auto md:h-20"
+                loading="lazy"
+              />
+              <div className="flex-1 space-y-3">
+                <Badge className="w-fit bg-brand text-brand-foreground">Mesterhus</Badge>
+                <CardTitle className="text-2xl md:text-3xl">Sertifisert forhandler av Mesterhus</CardTitle>
+                <CardDescription className="text-base">
+                  Vi bygger med Mesterhus sine gjennomprøvde løsninger og kvalitetskrav. Det gir deg trygghet for solide
+                  materialvalg, moderne arkitektur og tett oppfølging gjennom hele prosjektet.
+                </CardDescription>
+              </div>
+              <Button asChild size="lg" className="mt-2 md:mt-0">
+                <a
+                  href="https://www.mesterhus.no/forhandlere/rasmussen-og-skjelbred-as"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Les mer hos Mesterhus
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Certifications (placed under About) */}
       <section className="py-12">
         <div className="container mx-auto px-4">
