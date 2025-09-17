@@ -49,10 +49,9 @@ const Navigation = () => {
                 key={item.name}
                 to={item.path}
                 className={({ isActive }) =>
-                  `relative px-1 py-2 text-lg font-medium transition-colors after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-brand after:transition-opacity ${
-                    isActive
-                      ? "text-brand after:opacity-100"
-                      : "text-foreground/80 hover:text-brand after:opacity-0"
+                  `relative px-1 py-2 text-lg font-medium transition-colors after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-brand after:transition-opacity ${isActive
+                    ? "text-brand after:opacity-100"
+                    : "text-foreground/80 hover:text-brand after:opacity-0"
                   }`
                 }
               >
@@ -75,15 +74,16 @@ const Navigation = () => {
           {/* Mobile menu button */}
           <div className="lg:hidden">
             <Button
-              variant="ghost"
-              size="sm"
+              variant="default"
+              size="icon"
+              className="h-8 w-8 rounded-lg bg-brand text-brand-foreground hover:bg-brand/90"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-6 w-6 text-brand-foreground" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-6 w-6 text-brand-foreground" />
               )}
             </Button>
           </div>
@@ -99,15 +99,14 @@ const Navigation = () => {
                   to={item.path}
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
-                    `block text-sm font-medium py-2 transition-colors hover:text-brand ${
-                      isActive ? "text-brand" : "text-foreground/80"
+                    `block text-sm font-medium py-2 transition-colors hover:text-brand ${isActive ? "text-brand" : "text-foreground/80"
                     }`
                   }
                 >
                   {item.name}
                 </NavLink>
               ))}
-              
+
               {/* Facebook Link in Mobile Menu */}
               <div className="pt-4 border-t border-border/60">
                 <a
