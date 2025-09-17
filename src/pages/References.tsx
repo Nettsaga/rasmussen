@@ -8,13 +8,13 @@ import { useSEO } from "@/hooks/use-seo";
 
 const References = () => {
   useSEO('references');
-  
+
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   // Reference images from public/references folder
   const referenceImages = [
     "/references/1.jpg",
-    "/references/2.jpeg", 
+    "/references/2.jpeg",
     "/references/3.jpg",
     "/references/4.jpg",
     "/references/5.jpg",
@@ -57,16 +57,16 @@ const References = () => {
   };
 
   return (
-    <div>
+    <div className="theme-light bg-background text-foreground">
       {/* Hero Section */}
       <HeroSection className="min-h-[50vh]" backgroundImage="/references/4.jpg">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Våre referanser
           </h1>
-          <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
-            Her kan du se bilder av hus og bygninger vi har bygget for private personer, 
-            borettslag, barnehager og mer. Vi har et variert utvalg av hus 
+          <p className="text-lg text-white max-w-4xl mx-auto">
+            Her kan du se bilder av hus og bygninger vi har bygget for private personer,
+            borettslag, barnehager og mer. Vi har et variert utvalg av hus
             og kan også tilpasse og lage dine egne hjem og løsninger.
           </p>
         </div>
@@ -80,7 +80,7 @@ const References = () => {
               Våre byggeprosjekter
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Vi prioriterer kvalitet og godt håndverk, og har sentral godkjenning i alle relevante klasser. 
+              Vi prioriterer kvalitet og godt håndverk, og har sentral godkjenning i alle relevante klasser.
               Vi holder til i Stokke og leverer våre byggetjenester til kunder i hele Vestfold.
             </p>
           </div>
@@ -89,7 +89,7 @@ const References = () => {
           <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
             {referenceImages.map((image, index) => (
               <div key={index} className="break-inside-avoid mb-6">
-                <div 
+                <div
                   className="group cursor-pointer overflow-hidden rounded-lg shadow-sm hover:shadow-xl transition-all duration-300"
                   onClick={() => openLightbox(index)}
                 >
@@ -130,7 +130,7 @@ const References = () => {
 
       {/* Lightbox */}
       {selectedImage !== null && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
           onClick={closeLightbox}
           onKeyDown={handleKeyDown}

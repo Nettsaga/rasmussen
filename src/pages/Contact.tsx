@@ -12,7 +12,7 @@ import { useSEO } from "@/hooks/use-seo";
 
 const Contact = () => {
   useSEO('contact');
-  
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -33,7 +33,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Honeypot check
     if (formData.honeypot) {
       return;
@@ -51,9 +51,9 @@ const Contact = () => {
       // Here you would typically send the form data to your backend
       // For now, we'll just simulate success
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       toast.success("Takk for din henvendelse! Vi tar kontakt så snart som mulig.");
-      
+
       // Reset form
       setFormData({
         name: "",
@@ -70,15 +70,15 @@ const Contact = () => {
   };
 
   return (
-    <div>
+    <div className="theme-light bg-background text-foreground">
       {/* Hero Section */}
       <HeroSection className="min-h-[50vh]" backgroundImage="/references/10.jpg">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Kontakt oss
           </h1>
-          <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
-            Ta kontakt for en uforpliktende samtale om ditt byggeprosjekt. 
+          <p className="text-lg text-white max-w-4xl mx-auto">
+            Ta kontakt for en uforpliktende samtale om ditt byggeprosjekt.
             Vi svarer raskt og gir deg en ærlig vurdering.
           </p>
         </div>
@@ -103,8 +103,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">Telefon</div>
-                      <a 
-                        href="tel:+4790996432" 
+                      <a
+                        href="tel:+4790996432"
                         className="text-muted-foreground hover:text-brand transition-colors"
                       >
                         +47 909 96 432
@@ -118,8 +118,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">E-post</div>
-                      <a 
-                        href="mailto:sverre@r-s.no" 
+                      <a
+                        href="mailto:sverre@r-s.no"
                         className="text-muted-foreground hover:text-brand transition-colors"
                       >
                         sverre@r-s.no
@@ -140,7 +140,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                 
+
                 </CardContent>
               </Card>
 
@@ -149,7 +149,7 @@ const Contact = () => {
                 <CardContent className="pt-6">
                   <h3 className="font-semibold text-brand mb-2">Rask respons</h3>
                   <p className="text-sm text-muted-foreground">
-                    Vi tar kontakt så snart som mulig, vanligvis innen samme arbeidsdag. 
+                    Vi tar kontakt så snart som mulig, vanligvis innen samme arbeidsdag.
                     For hastende saker, ring oss direkte.
                   </p>
                 </CardContent>
@@ -205,7 +205,7 @@ const Contact = () => {
                   </div>
 
                   <div className="space-y-2">
-                      <Label htmlFor="email" className="text-gray-900">E-post *</Label>
+                    <Label htmlFor="email" className="text-gray-900">E-post *</Label>
                     <Input
                       id="email"
                       name="email"
@@ -219,7 +219,7 @@ const Contact = () => {
                   </div>
 
                   <div className="space-y-2">
-                      <Label htmlFor="message" className="text-gray-900">Melding *</Label>
+                    <Label htmlFor="message" className="text-gray-900">Melding *</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -232,9 +232,9 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    className="w-full" 
+                  <Button
+                    type="submit"
+                    className="w-full"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Sender..." : "Send melding"}

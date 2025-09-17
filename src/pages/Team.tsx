@@ -8,7 +8,7 @@ import { useSEO } from "@/hooks/use-seo";
 
 const Team = () => {
   useSEO('team');
-  
+
   const teamMembers = [
     {
       name: "Sverre Rasmussen",
@@ -53,16 +53,16 @@ const Team = () => {
   ];
 
   return (
-    <div>
+    <div className="theme-light bg-background text-foreground">
       {/* Hero Section */}
       <HeroSection className="min-h-[50vh]" backgroundImage="/references/9.jpg">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Vårt team
           </h1>
-          <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
-            Møt de erfarne fagfolkene bak Rasmussen & Skjelbred A/S. 
-            Vårt team samler tiår med byggeerfaring og lokal kunnskap 
+          <p className="text-lg text-white max-w-4xl mx-auto">
+            Møt de erfarne fagfolkene bak Rasmussen & Skjelbred A/S.
+            Vårt team samler tiår med byggeerfaring og lokal kunnskap
             for å levere eksepsjonelle resultater for hvert prosjekt.
           </p>
         </div>
@@ -76,7 +76,7 @@ const Team = () => {
               Rasmussen & Skjelbred A/S
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Med over 30 års byggeerfaring er vårt team dedikert til 
+              Med over 30 års byggeerfaring er vårt team dedikert til
               å levere kvalitetshåndverk og eksepsjonell service til kunder i hele Vestfold.
             </p>
             <div className="mt-6 flex items-center justify-center space-x-4 text-sm text-muted-foreground">
@@ -94,8 +94,8 @@ const Team = () => {
           {/* Team Grid */}
           <div className="flex flex-wrap justify-center gap-8 mb-12">
             {teamMembers.map((member, index) => (
-              <Card 
-                key={member.name} 
+              <Card
+                key={member.name}
                 className="group hover:shadow-xl transition-all duration-300 overflow-hidden bg-white border-gray-200 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]"
               >
                 <div className="aspect-square overflow-hidden">
