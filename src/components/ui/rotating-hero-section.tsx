@@ -9,29 +9,27 @@ interface RotatingHeroSectionProps {
   interval?: number; // milliseconds between image changes
 }
 
-const RotatingHeroSection = ({ 
-  children, 
-  className, 
+const RotatingHeroSection = ({
+  children,
+  className,
   images,
   overlay = true,
-  interval = 5000 // 5 seconds default
+  interval = 5000, // 5 seconds default
 }: RotatingHeroSectionProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    images.forEach((src) => {
+      const image = new Image();
+      image.src = src;
+    });
+  }, [images]);
 
   useEffect(() => {
     if (images.length <= 1) return;
 
     const timer = setInterval(() => {
-      setIsTransitioning(true);
-      
-      // Wait for fade out to complete, then change image
-      setTimeout(() => {
-        setCurrentImageIndex((prevIndex) => 
-          (prevIndex + 1) % images.length
-        );
-        setIsTransitioning(false);
-      }, 500); // Half of the transition duration
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, interval);
 
     return () => clearInterval(timer);
@@ -50,11 +48,8 @@ const RotatingHeroSection = ({
           <div
             key={image}
             className={cn(
-              "absolute inset-0 transition-opacity duration-500 ease-in-out",
-              {
-                "opacity-100": index === currentImageIndex && !isTransitioning,
-                "opacity-0": index !== currentImageIndex || isTransitioning,
-              }
+              "absolute inset-0 transition-opacity duration-1000 ease-in-out",
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
             )}
             style={{
               backgroundImage: `url(${image})`,

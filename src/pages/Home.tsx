@@ -13,9 +13,9 @@ import { useSEO } from "@/hooks/use-seo";
 
 const Home = () => {
   useSEO('home');
-  
+
   // Font test - remove this after confirming font works
- 
+
 
   const services = [
     {
@@ -68,11 +68,14 @@ const Home = () => {
   return (
     <div className="font-sans bg-background text-foreground">
       {/* Hero Section */}
-      <RotatingHeroSection 
+      <RotatingHeroSection
         images={[
-          "/references/5.jpg",
-          "/references/4.jpg", 
-          "/references/6.jpg"
+          "/references/4.jpg",
+          "/references/8.jpg",
+          "/references/10.jpg",
+          "/references/14.jpg",
+          "/references/7.jpg",
+          "/references/2.jpeg",
         ]}
         interval={6000}
       >
@@ -124,18 +127,21 @@ const Home = () => {
                 leiligheter i Stokke/Tønsberg – kanskje har vi et prosjekt som passer deg.
               </p>
             </div>
-          
+
           </div>
           <div>
-            <AspectRatio ratio={16 / 9}>
-              <img
-                src="/references/3.jpg"
-                alt="Byggeprosjekt"
-                className="h-full w-full object-cover rounded-lg"
+            <AspectRatio ratio={8 / 8}>
+              <video
+                src="/reel2.mp4"
+                className="h-full w-full rounded-lg object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
               />
             </AspectRatio>
           </div>
-         
+
         </div>
       </section>
 
@@ -152,7 +158,7 @@ const Home = () => {
               />
               <div className="flex-1 space-y-3">
                 <Badge className="w-fit bg-brand text-brand-foreground">Mesterhus</Badge>
-                <CardTitle className="text-2xl md:text-3xl">Sertifisert forhandler av Mesterhus</CardTitle>
+                <CardTitle className="text-2xl md:text-3xl">Stolt forhandler av Mesterhus</CardTitle>
                 <CardDescription className="text-base">
                   Vi bygger med Mesterhus sine gjennomprøvde løsninger og kvalitetskrav. Det gir deg trygghet for solide
                   materialvalg, moderne arkitektur og tett oppfølging gjennom hele prosjektet.
@@ -183,17 +189,17 @@ const Home = () => {
               <CardDescription>Dokumentasjon og miljøprofil</CardDescription>
             </CardHeader>
             <CardContent>
-          <div className="flex flex-wrap items-center justify-center gap-20">
-            {certifications.map((c, i) => (
-              <img
-                key={c.src}
-                src={c.src}
-                alt={c.alt}
-                className={`h-20 md:h-28 lg:h-32 w-auto object-contain`}
-                loading="lazy"
-              />
-            ))}
-          </div>
+              <div className="flex flex-wrap items-center justify-center gap-20">
+                {certifications.map((c, i) => (
+                  <img
+                    key={c.src}
+                    src={c.src}
+                    alt={c.alt}
+                    className={`h-20 md:h-28 lg:h-32 w-auto object-contain`}
+                    loading="lazy"
+                  />
+                ))}
+              </div>
             </CardContent>
             <CardFooter className="justify-center">
               <Button asChild size="lg">
@@ -262,7 +268,7 @@ const Home = () => {
         </div>
       </section>
 
-     
+
 
       {/* Why Choose Us */}
       {/* <section className="py-24 bg-subtle">
@@ -331,7 +337,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-   
+
     </div>
   );
 };

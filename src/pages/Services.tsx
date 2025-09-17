@@ -23,33 +23,23 @@ const Services = () => {
     },
     {
       title: "Rehabilitering av bolig",
-      image: "/services/3.jpg",
+      image: "/references/7.jpg",
       description: "Oppgrader hjemmet ditt med energieffektive og funksjonelle løsninger som bevarer karakteren og øker verdien.",
       to: "/tjenester/rehabilitering",
     },
     {
-      title: "Garage",
-      image: "/services/4.jpg",
+      title: "Garasje",
+      image: "garage.jpg",
       description: "Fra integrerte dobbeltgarasjer til kompakte carporter – vi planlegger og bygger praktiske løsninger for kjøretøyene dine.",
     },
     {
-      title: "Barnehager og skoler",
-      image: "/services/5.jpg",
-      description: "Vi bygger trygge og inspirerende læringsmiljøer med fokus på robuste materialer og fleksible planløsninger.",
-    },
-    {
-      title: "Leilighetskompleks",
-      image: "/services/6.jpg",
-      description: "Effektiv prosjektstyring og kvalitet i alle ledd for større boligprosjekter med mange boenheter.",
-    },
-    {
       title: "Nøkkelferdig hus",
-      image: "/services/7.jpg",
+      image: "/services/6.jpg",
       description: "Vi leverer komplette nøkkelferdige boliger – du flytter rett inn i et ferdigstilt hjem tilpasset dine behov.",
     },
     {
       title: "Ombygging",
-      image: "/services/8.jpg",
+      image: "/services/7.jpg",
       description: "Tilpass boligen til nye behov med smart ombygging, åpne planløsninger og bedre utnyttelse av arealet.",
     },
   ];
@@ -62,7 +52,7 @@ const Services = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6 pt-8">
             Våre byggetjenester
           </h1>
-          
+
         </div>
       </HeroSection>
 
@@ -76,7 +66,7 @@ const Services = () => {
           </div>
 
           {/* Service Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {serviceCards.map((service) => (
               <Card
                 key={service.title}
@@ -96,8 +86,8 @@ const Services = () => {
                       {service.description}
                     </CardDescription>
                   </CardHeader>
-                  <CardFooter className="pt-0 border-t border-border/30">
-                    {service.to ? (
+                  {service.to && (
+                    <CardFooter className="pt-0 border-t border-border/30">
                       <Button
                         asChild
                         variant="link"
@@ -108,12 +98,8 @@ const Services = () => {
                           <ArrowRight className="h-4 w-4" />
                         </NavLink>
                       </Button>
-                    ) : (
-                      <Button variant="link" className="px-0 text-muted-foreground" disabled>
-                        Les mer (kommer snart)
-                      </Button>
-                    )}
-                  </CardFooter>
+                    </CardFooter>
+                  )}
                 </div>
               </Card>
             ))}

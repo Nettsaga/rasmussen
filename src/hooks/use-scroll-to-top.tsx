@@ -17,8 +17,13 @@ export const useScrollToTop = () => {
       }
     }
 
+    const { documentElement, body } = document;
+    const previousBehavior = documentElement.style.scrollBehavior;
+
+    documentElement.style.scrollBehavior = "auto";
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    body.scrollTop = 0;
+    documentElement.scrollTop = 0;
+    documentElement.style.scrollBehavior = previousBehavior;
   }, [location.pathname, location.search, location.hash]);
 };
