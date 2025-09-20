@@ -19,16 +19,8 @@ const Team = () => {
       image: "/team/sverre-sh.webp",
     },
     {
-      name: "Kai Roger Skjelbred",
-      title: "Byggmester",
-      company: "Rasmussen & Skjelbred A/S",
-      phone: "909 96 442",
-      email: "kai@r-s.no",
-      image: "/team/kai-sh.webp",
-    },
-    {
       name: "Terje Magnus Bråten",
-      title: "Medarbeider",
+      title: "Partner og prosjektleder",
       company: "Rasmussen & Skjelbred A/S",
       phone: "970 69 221",
       email: "terje@r-s.no",
@@ -36,7 +28,7 @@ const Team = () => {
     },
     {
       name: "Martin Wold",
-      title: "Medarbeider",
+      title: "Partner og prosjektleder",
       company: "Rasmussen & Skjelbred A/S",
       phone: "979 76 175",
       email: "martin@r-s.no",
@@ -44,7 +36,7 @@ const Team = () => {
     },
     {
       name: "Kim Andre Norheim",
-      title: "Medarbeider",
+      title: "Kalkulatør og byggmester",
       company: "Rasmussen & Skjelbred A/S",
       phone: "975 02 942",
       email: "kim@r-s.no",

@@ -73,9 +73,9 @@ const Home = () => {
           "/references/4.jpg",
           "/references/8.jpg",
           "/references/10.jpg",
-          "/references/14.jpg",
+          "/references/1.jpg",
           "/references/7.jpg",
-          "/references/2.jpeg",
+          "/references/3.jpg",
         ]}
         interval={6000}
       >
@@ -112,7 +112,7 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Rasmussen & Skjelbred AS</h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Byggmester i Stokke, Vestfold – etablert i 1986 og i dag 20 ansatte. Vi prioriterer kvalitet og godt
+                Byggmester i Stokke, Vestfold – etablert i 1986 og i dag 16 ansatte. Vi prioriterer kvalitet og godt
                 håndverk, og har sentral godkjenning.
               </p>
               <p>

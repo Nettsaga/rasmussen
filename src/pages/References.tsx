@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { NavLink } from "react-router-dom";
 import { ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import HeroSection from "@/components/ui/hero-section";
-import heroImage from "@/assets/hero-home.webp";
 import { useSEO } from "@/hooks/use-seo";
 
 const References = () => {
@@ -12,9 +11,11 @@ const References = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   // Reference images from public/references folder
+  // First two are featured
   const referenceImages = [
+    "/references/Referanser 2.jpg",
+    "/references/Referanser.jpg",
     "/references/1.jpg",
-    "/references/2.jpeg",
     "/references/3.jpg",
     "/references/4.jpg",
     "/references/5.jpg",
@@ -25,9 +26,6 @@ const References = () => {
     "/references/10.jpg",
     "/references/11.jpg",
     "/references/12.jpg",
-    "/references/13.jpg",
-    "/references/14.jpg",
-    "/references/15.jpg",
   ];
 
   const openLightbox = (index: number) => {
@@ -85,17 +83,32 @@ const References = () => {
             </p>
           </div>
 
-          {/* Masonry Grid */}
+          {/* Featured Images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            {[0, 1].map((i) => (
+              <div key={`featured-${i}`} className="overflow-hidden rounded-xl shadow-sm hover:shadow-xl transition-all duration-300">
+                <img
+                  src={referenceImages[i]}
+                  alt={`Referanseprosjekt ${i + 1}`}
+                  className="w-full h-full object-cover aspect-[16/10] cursor-pointer group-hover:scale-105 transition-transform duration-500"
+                  onClick={() => openLightbox(i)}
+                  loading="eager"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Masonry Grid for the rest */}
           <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
-            {referenceImages.map((image, index) => (
-              <div key={index} className="break-inside-avoid mb-6">
+            {referenceImages.slice(2).map((image, index) => (
+              <div key={index + 2} className="break-inside-avoid mb-6">
                 <div
                   className="group cursor-pointer overflow-hidden rounded-lg shadow-sm hover:shadow-xl transition-all duration-300"
-                  onClick={() => openLightbox(index)}
+                  onClick={() => openLightbox(index + 2)}
                 >
                   <img
                     src={image}
-                    alt={`Referanseprosjekt ${index + 1}`}
+                    alt={`Referanseprosjekt ${index + 3}`}
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />

@@ -20,7 +20,7 @@ const ServiceOgSmajobber = () => {
             Vi tar på oss mindre prosjekter av innen bygg og vedlikehold, for kunder i Vestfold.
           </p>
           <div className="overflow-hidden rounded-2xl border border-border/40 bg-subtle">
-            <img src="/services/2.jpg" alt="" className="h-full w-full object-cover" />
+            <img src="/services/service.jpg" alt="" className="h-full w-full object-cover" />
           </div>
           <h2 className="text-2xl font-semibold">Vi kan utføre mindre oppdrag på kort varsel</h2>
           <p>

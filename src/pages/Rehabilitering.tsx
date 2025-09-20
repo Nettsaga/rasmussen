@@ -18,7 +18,7 @@ const Rehabilitering = () => {
             Når man kjøper en ny bolig, er det sjelden at alle løsninger er akkurat slik man ønsker dem. Det vil også dukke opp et og annet man ønsker å utbedre eller forandre på når man har hatt en bolig over lengre tid. Vi i Rasmussen &amp; Skjelbred AS utfører utvendig og innvendig rehabilitering av bolig. Våre kompetente fagarbeidere har lang og bred erfaring, og hjelper deg gjerne med å komme frem til de beste løsningene for ditt hus eller hytte.
           </p>
           <div className="overflow-hidden rounded-2xl border border-border/40 bg-subtle">
-            <img src="/references/7.jpg" alt="" className="h-full w-full object-cover" />
+            <img src="/services/Rehabilitering.jpg" alt="" className="h-full w-full object-cover" />
           </div>
           <h2 className="text-2xl font-semibold">Vi tar små og store prosjekter</h2>
           <p>

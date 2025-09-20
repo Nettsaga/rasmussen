@@ -17,13 +17,13 @@ const Services = () => {
     },
     {
       title: "Service og småjobber",
-      image: "/services/2.jpg",
+      image: "/services/service.jpg",
       description: "Alt fra mindre reparasjoner til løpende vedlikehold. Vi løser oppgaver raskt og ryddig for både hjem og hytte.",
       to: "/tjenester/service-og-smajobber",
     },
     {
       title: "Rehabilitering av bolig",
-      image: "/references/7.jpg",
+      image: "/services/Rehabilitering.jpg",
       description: "Oppgrader hjemmet ditt med energieffektive og funksjonelle løsninger som bevarer karakteren og øker verdien.",
       to: "/tjenester/rehabilitering",
     },
@@ -39,7 +39,7 @@ const Services = () => {
     },
     {
       title: "Ombygging",
-      image: "/services/7.jpg",
+      image: "/services/Ombygging.png",
       description: "Tilpass boligen til nye behov med smart ombygging, åpne planløsninger og bedre utnyttelse av arealet.",
     },
   ];

@@ -21,6 +21,8 @@ const Contact = () => {
     honeypot: "", // Spam protection
   });
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -48,13 +50,21 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Here you would typically send the form data to your backend
-      // For now, we'll just simulate success
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const formPayload = new FormData();
+      formPayload.append("name", formData.name);
+      formPayload.append("email", formData.email);
+      formPayload.append("phone", formData.phone);
+      formPayload.append("message", formData.message);
 
+      await fetch("https://usebasin.com/f/41dbd74c62bd", {
+        method: "POST",
+        body: formPayload,
+        mode: "no-cors",
+      });
+
+      setIsSubmitted(true);
       toast.success("Takk for din henvendelse! Vi tar kontakt så snart som mulig.");
 
-      // Reset form
       setFormData({
         name: "",
         phone: "",
@@ -62,7 +72,10 @@ const Contact = () => {
         message: "",
         honeypot: "",
       });
+
+      setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
+      console.error("Error submitting form:", error);
       toast.error("Noe gikk galt. Prøv igjen eller ring oss direkte.");
     } finally {
       setIsSubmitting(false);
@@ -119,10 +132,10 @@ const Contact = () => {
                     <div>
                       <div className="font-semibold text-gray-900">E-post</div>
                       <a
-                        href="mailto:sverre@r-s.no"
+                        href="mailto:post@r-s.no"
                         className="text-muted-foreground hover:text-brand transition-colors"
                       >
-                        sverre@r-s.no
+                        post@r-s.no
                       </a>
                     </div>
                   </div>
@@ -240,13 +253,11 @@ const Contact = () => {
                     {isSubmitting ? "Sender..." : "Send melding"}
                   </Button>
 
-                  <p className="text-xs text-muted-foreground">
-                    * Påkrevde felt. Vi behandler dine personopplysninger i henhold til vår{" "}
-                    <a href="/privacy" className="text-brand hover:underline">
-                      personvernpolicy
-                    </a>
-                    .
-                  </p>
+                  {isSubmitted && (
+                    <p className="text-sm text-green-600">Meldingen er sendt! Takk for din henvendelse.</p>
+                  )}
+
+
                 </form>
               </CardContent>
             </Card>
